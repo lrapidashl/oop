@@ -1,5 +1,5 @@
-﻿#include <iostream>
-#include <fstream>
+﻿#include <fstream>
+#include <iostream>
 #include <optional>
 #include <string>
 
@@ -16,7 +16,7 @@ std::optional<Args> ParseArgs(int argc, char* argv[])
 	if (argc != 5)
 	{
 		std::cout << "Invalid arguments count\n"
-			<< "Usage: replace.exe <input file> <output file> <search string> <replace string>\n";
+				  << "Usage: replace.exe <input file> <output file> <search string> <replace string>\n";
 		return std::nullopt;
 	}
 	Args args;
@@ -29,10 +29,9 @@ std::optional<Args> ParseArgs(int argc, char* argv[])
 }
 
 std::string ReplaceString(
-	const std::string& subject, 
-	const std::string& searchString, 
-	const std::string& replaceString
-)
+	const std::string& subject,
+	const std::string& searchString,
+	const std::string& replaceString)
 {
 	if (searchString == "")
 	{
@@ -52,11 +51,10 @@ std::string ReplaceString(
 }
 
 void CopyStreamWithReplacement(
-	std::istream& input, 
+	std::istream& input,
 	std::ostream& output,
-	const std::string& searchString, 
-	const std::string& replaceString
-)
+	const std::string& searchString,
+	const std::string& replaceString)
 {
 	std::string line;
 
@@ -70,8 +68,7 @@ bool CopyFileWithReplacement(
 	const std::string& inputFileName,
 	const std::string& outputFileName,
 	const std::string& searchString,
-	const std::string& replaceString
-)
+	const std::string& replaceString)
 {
 	std::ifstream input;
 	input.open(inputFileName);
@@ -115,11 +112,10 @@ int main(int argc, char* argv[])
 	}
 
 	if (!CopyFileWithReplacement(
-		args->inputFileName,
-		args->outputFileName,
-		args->searchString,
-		args->replaceString
-	))
+			args->inputFileName,
+			args->outputFileName,
+			args->searchString,
+			args->replaceString))
 	{
 		return 1;
 	}
